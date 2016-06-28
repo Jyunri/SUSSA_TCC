@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbBottom"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="fill_parent"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ToolBarTheme"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_alignParentBottom="true"
+        >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center">
+
+            <ImageButton
+                android:scaleType="centerInside"
+                android:layout_width="50dp"
+                android:layout_height="fill_parent"
+                android:src="@drawable/sussaicon"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:id="@+id/itProfile"
+                />
+
+            <ImageButton
+                android:scaleType="centerInside"
+                android:layout_width="50dp"
+                android:layout_height="fill_parent"
+                android:src="@drawable/gdisciplinas"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:id="@+id/itMatriz"
+                />
+
+            <ImageButton
+                android:scaleType="centerInside"
+                android:layout_width="50dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:src="@drawable/professor"
+                android:background="@color/colorPrimary"
+                android:id="@+id/itProfessores"
+                />
+
+            <ImageButton
+                android:scaleType="centerInside"
+                android:layout_width="50dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:src="@drawable/arquivos"
+                android:background="@color/colorPrimary"
+                android:id="@+id/itArquivos"
+                />
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+</RelativeLayout>
