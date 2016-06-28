@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,10 +29,12 @@ import java.net.URL;
 
 public class Professor_detalhe extends AppCompatActivity {
 
-    TextView tvNome;
+    TextView tvNome,tvAvaliar;
     String nome;
-
+    Professor currentProfessor;
+    BDProfessores bdProfessores;
     RatingBar rbDidatica, rbCoerencia, rbDominio, rbAuxilio;
+    ImageView ivProfessor;
 
     public static final int CONNECTION_TIMEOUT=10000;
     public static final int READ_TIMEOUT=15000;
@@ -45,20 +49,51 @@ public class Professor_detalhe extends AppCompatActivity {
             nome = extras.getString("nome");
             //The key argument here must match that used in the other activity
         }
-        tvNome = (TextView)findViewById(R.id.tvNomeProfessor);
-        tvNome.setText("Professor "+nome.toUpperCase());
 
-        rbDidatica = (RatingBar)findViewById(R.id.rbDIDATICA);
-        rbCoerencia = (RatingBar)findViewById(R.id.rbCOERENCIA);
-        rbDominio = (RatingBar)findViewById(R.id.rbDOMINIO);
-        rbAuxilio = (RatingBar)findViewById(R.id.rbAUXILIO);
+        bdProfessores = new BDProfessores();
 
-        rbDidatica.setEnabled(false);
-        rbCoerencia.setEnabled(false);
-        rbDominio.setEnabled(false);
-        rbAuxilio.setEnabled(false);
+        currentProfessor = bdProfessores.bdProfessor.get(nome);
 
-        AsyncTask as = new AsyncRating().execute();
+        try {
+            ivProfessor = (ImageView) findViewById(R.id.ivImagemProfessor);
+            ivProfessor.setImageResource(currentProfessor.getImagesrc());
+
+
+            tvNome = (TextView) findViewById(R.id.tvNomeProfessor);
+            tvNome.setText("Professor " + nome.toUpperCase());
+
+            rbDidatica = (RatingBar) findViewById(R.id.rbDIDATICA);
+            rbCoerencia = (RatingBar) findViewById(R.id.rbCOERENCIA);
+            rbDominio = (RatingBar) findViewById(R.id.rbDOMINIO);
+            rbAuxilio = (RatingBar) findViewById(R.id.rbAUXILIO);
+
+            rbAuxilio.setRating(currentProfessor.getRatingAuxilio());
+            rbDominio.setRating(currentProfessor.getRatingDominio());
+            rbCoerencia.setRating(currentProfessor.getRatingCoerencia());
+            rbDidatica.setRating(currentProfessor.getRatingDidatica());
+
+
+            rbDidatica.setEnabled(false);
+            rbCoerencia.setEnabled(false);
+            rbDominio.setEnabled(false);
+            rbAuxilio.setEnabled(false);
+        }catch (NullPointerException e)
+        {
+            Log.d("CURRENTPROFESSOR","Professor nao existe");
+            e.printStackTrace();
+        }
+
+
+        tvAvaliar = (TextView)findViewById(R.id.tvAvaliar);
+        tvAvaliar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Entrando tela de avaliacao",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        //AsyncTask as = new AsyncRating().execute();
 
     }
 

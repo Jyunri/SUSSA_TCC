@@ -42,25 +42,25 @@ public class ProfAlfabetica_fragment extends Fragment implements View.OnClickLis
         {
             case(R.id.ivCerebro):
                 i = new Intent(getContext(),Professor_detalhe.class);
-                i.putExtra("nome","cerebro");
+                i.putExtra("nome","Cerebro");
                 Toast.makeText(getContext(),"Abrindo detalhes cerebro",Toast.LENGTH_SHORT).show();
                 startActivity(i);
                 break;
             case(R.id.ivBeakman):
                 i = new Intent(getContext(),Professor_detalhe.class);
-                i.putExtra("nome","beakman");
+                i.putExtra("nome","Beakman");
                 Toast.makeText(getContext(),"Abrindo detalhes beakman",Toast.LENGTH_SHORT).show();
                 startActivity(i);
                 break;
             case(R.id.ivBrown):
                 i = new Intent(getContext(),Professor_detalhe.class);
-                i.putExtra("nome","brown");
+                i.putExtra("nome","Brown");
                 Toast.makeText(getContext(),"Abrindo detalhes brown",Toast.LENGTH_SHORT).show();
                 startActivity(i);
                 break;
             case(R.id.ivFrink):
                 i = new Intent(getContext(),Professor_detalhe.class);
-                i.putExtra("nome","frink");
+                i.putExtra("nome","Frink");
                 Toast.makeText(getContext(),"Abrindo detalhes Frink",Toast.LENGTH_SHORT).show();
                 startActivity(i);
                 break;

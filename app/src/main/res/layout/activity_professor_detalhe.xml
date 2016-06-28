@@ -9,122 +9,205 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.jimy.sussa.Professor_detalhe">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView" />
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/llDidatica">
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DIDATICA"
-            android:id="@+id/tvDidatica"
-            android:layout_gravity="center"
-            android:layout_below="@+id/imageView2" />
-            <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rbDIDATICA"
-            android:layout_alignBottom="@+id/tvDidatica"
-            />
-        </LinearLayout>
-
-
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-            android:id="@+id/llCoerencia"
-            android:layout_below="@id/llDidatica">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="COERENCIA"
-                android:id="@+id/tvCoerencia"
-                android:layout_marginTop="72dp"
-                android:gravity="center" />
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/rbCOERENCIA"
-                android:layout_above="@+id/tvDominio"
-                />
-
-
-        </LinearLayout>
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-            android:id="@+id/lldominio"
-            android:layout_below="@id/llCoerencia">
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DOMINIO"
-            android:id="@+id/tvDominio"
-            android:layout_below="@+id/tvCoerencia"
-            />
-
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/rbDOMINIO"
-                android:layout_above="@+id/llauxilio"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/llauxilio"
-            android:layout_below="@id/lldominio">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="AUXILIO"
-                android:id="@+id/tvAuxilio"
-                android:layout_below="@+id/tvDominio"
-                />
-        </LinearLayout>
-
-
-
-
-
-
-
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AVALIAR!"
-        android:id="@+id/textView6"
-        android:layout_below="@+id/llauxilio"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tvNomeProfessor"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="NOME PROFESSOR"
-        android:id="@+id/tvNomeProfessor"
-        android:layout_below="@+id/imageView2"
-        />
+        android:layout_marginTop="30dp"
+        android:gravity="center"/>
 
-    <RatingBar
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/rbAUXILIO"
-        />
+        android:layout_below="@id/tvNomeProfessor"
+        android:layout_marginTop="50dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivImagemProfessor"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/cerebro"
+                android:layout_marginTop="30dp"/>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivImagemProfessor"
+                android:id="@+id/glRatings">
+
+                <TextView
+                    android:id="@+id/tvDidatica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="DIDATICA"
+                    android:layout_row="0"
+                    android:layout_column="0" />
+
+                <RatingBar
+                    android:id="@+id/rbDIDATICA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    />
+
+                <TextView
+                android:id="@+id/tvCoerencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                android:text="COERENCIA" />
+
+                <RatingBar
+                android:id="@+id/rbCOERENCIA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="1"/>
+
+                <TextView
+                android:id="@+id/tvDominio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:text="DOMINIO"
+                    android:layout_row="2"
+                    android:layout_column="0"/>
+
+                <RatingBar
+                android:id="@+id/rbDOMINIO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="1"/>
+
+
+                <TextView
+                android:id="@+id/tvAuxilio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:text="AUXILIO"
+                    android:layout_row="3"
+                    android:layout_column="0"/>
+
+                <RatingBar
+                android:id="@+id/rbAUXILIO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="1"/>
+            </GridLayout>
+
+
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/llDidatica"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/ivImagemProfessor">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvDidatica"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:text="DIDATICA" />-->
+
+                <!--<RatingBar-->
+                    <!--android:id="@+id/rbDIDATICA"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/llCoerencia"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/llDidatica">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvCoerencia"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:text="COERENCIA" />-->
+
+                <!--<RatingBar-->
+                    <!--android:id="@+id/rbCOERENCIA"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/lldominio"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/llCoerencia">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvDominio"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:text="DOMINIO" />-->
+
+                <!--<RatingBar-->
+                    <!--android:id="@+id/rbDOMINIO"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/llauxilio"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/lldominio">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvAuxilio"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:text="AUXILIO" />-->
+
+                <!--<RatingBar-->
+                    <!--android:id="@+id/rbAUXILIO"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
+
+            <TextView
+                android:id="@+id/tvAvaliar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/glRatings"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:text="AVALIAR!" />
+
+        </RelativeLayout>
+    </ScrollView>
+
 
 </RelativeLayout>

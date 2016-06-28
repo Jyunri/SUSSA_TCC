@@ -77,11 +77,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             case R.id.bEntrar:
                 userBuilder.setCurrentUser(login, "", "", senha, "", null, null); //limpeza ao retornar a activity
                 //offline
-                 authentication(login,senha);
+                authentication(login,senha);
+                //authentication2(login,senha);  //autenticacao hardcoded (sem bd)
 
                 //online
                 //new AsyncLogin().execute(login,senha);
-                //authentication2(login,senha);  //autenticacao hardcoded (sem bd)
                 break;
             case R.id.tvCadastrar:
                 Toast.makeText(this,"Redirecionando a tela de cadastro", Toast.LENGTH_SHORT).show();
