@@ -8,4 +8,5 @@ public class BDManager {
         int id = (int)Math.random()*1000;
         BDUsers.hashUsers.put("o", u);
     }
+
 }

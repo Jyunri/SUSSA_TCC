@@ -6,17 +6,15 @@ import java.util.HashMap;
  * Created by jimy on 28/06/16.
  */
 public class BDProfessores {
-    HashMap<String, Professor> bdProfessor;
-    Professor cerebro = new Professor("Cerebro",R.drawable.cerebro);
-    Professor beakman = new Professor("Beakman",R.drawable.beakman);
-    Professor frink = new Professor("Frink",R.drawable.frink);
-    Professor brown = new Professor("Brown",R.drawable.brown);
+    static HashMap<String, Professor> hashProfessor = createHashProfessores();
 
-    public BDProfessores() {
-        bdProfessor = new HashMap<>();
-        bdProfessor.put("Cerebro",cerebro);
-        bdProfessor.put("Beakman",beakman);
-        bdProfessor.put("Frink",frink);
-        bdProfessor.put("Brown",brown);
+    static HashMap createHashProfessores() {
+        HashMap<String,Professor> map = new HashMap<>();
+        map.put("Cerebro", new Professor("Cerebro",R.drawable.cerebro));
+        map.put("Beakman", new Professor("Beakman",R.drawable.beakman));
+        map.put("Frink", new Professor("Frink",R.drawable.frink));
+        map.put("Brown",new Professor("Brown",R.drawable.brown));
+
+        return map;
     }
 }

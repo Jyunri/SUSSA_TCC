@@ -1,14 +1,21 @@
 package com.example.jimy.sussa;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,14 +34,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Professor_detalhe extends AppCompatActivity {
+public class Professor_detalhe extends AppCompatActivity implements View.OnClickListener{
 
     TextView tvNome,tvAvaliar;
     String nome;
     Professor currentProfessor;
-    BDProfessores bdProfessores;
     RatingBar rbDidatica, rbCoerencia, rbDominio, rbAuxilio;
     ImageView ivProfessor;
+    EditText etRatingDidatica, etRatingCoerencia, etRatingDominio, etRatingAuxilio;
 
     public static final int CONNECTION_TIMEOUT=10000;
     public static final int READ_TIMEOUT=15000;
@@ -50,9 +57,8 @@ public class Professor_detalhe extends AppCompatActivity {
             //The key argument here must match that used in the other activity
         }
 
-        bdProfessores = new BDProfessores();
-
-        currentProfessor = bdProfessores.bdProfessor.get(nome);
+        if(!BDProfessores.hashProfessor.containsKey(nome))  Toast.makeText(getApplicationContext(),"Professor nao existente",Toast.LENGTH_SHORT).show();
+        else currentProfessor = BDProfessores.hashProfessor.get(nome);
 
         try {
             ivProfessor = (ImageView) findViewById(R.id.ivImagemProfessor);
@@ -85,17 +91,103 @@ public class Professor_detalhe extends AppCompatActivity {
 
 
         tvAvaliar = (TextView)findViewById(R.id.tvAvaliar);
-        tvAvaliar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Entrando tela de avaliacao",Toast.LENGTH_SHORT).show();
-            }
-        });
+        tvAvaliar.setOnClickListener(this);
 
 
         //AsyncTask as = new AsyncRating().execute();
 
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case(R.id.tvAvaliar):
+                Toast.makeText(getApplicationContext(),"Entrando tela de avaliacao",Toast.LENGTH_SHORT).show();
+
+                LayoutInflater alertLayout = LayoutInflater.from(this);
+                View view = alertLayout.inflate(R.layout.avaliacao_alertdialog, null);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder .setTitle("Avaliacao")
+                        .setView(view);
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+
+                etRatingDidatica = (EditText)dialog.findViewById(R.id.etDIDATICA);
+                etRatingDidatica.setSingleLine(true);
+                etRatingDidatica.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+                etRatingCoerencia = (EditText)dialog.findViewById(R.id.etCOERENCIA);
+                etRatingCoerencia.setSingleLine(true);
+                etRatingCoerencia.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+
+                etRatingDominio = (EditText)dialog.findViewById(R.id.etDOMINIO);
+                etRatingDominio.setSingleLine(true);
+                etRatingDominio.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+
+                etRatingAuxilio = (EditText)dialog.findViewById(R.id.etAUXILIO);
+                etRatingAuxilio.setSingleLine(true);
+                etRatingAuxilio.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+
+                Button btOk = (Button)dialog.findViewById(R.id.btOK);
+                Button btCancel = (Button)dialog.findViewById(R.id.btCANCELAR);
+
+                btOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String stDidatica = etRatingDidatica.getText().toString();
+                        String stCoerencia = etRatingCoerencia.getText().toString();
+                        String stDominio = etRatingDominio.getText().toString();
+                        String stAuxilio = etRatingAuxilio.getText().toString();
+
+                        boolean validParams = false;
+
+                        if((stDidatica != " ")&&(stCoerencia != " ")&&(stDominio!= " ")&&(stAuxilio!=" "))
+                        {
+                            int numDidatica = Integer.parseInt(stDidatica);
+                            int numCoerencia = Integer.parseInt(stCoerencia);
+                            int numDominio = Integer.parseInt(stDominio);
+                            int numAuxilio = Integer.parseInt(stAuxilio);
+
+                            if((numDidatica < 6)&&(numCoerencia < 6)&&(numDominio< 6)&&(numAuxilio<6))
+                            {
+                                validParams = true;
+                                currentProfessor.votarDidatica(numAuxilio);
+                                currentProfessor.votarCoerencia(numCoerencia);
+                                currentProfessor.votarDominio(numAuxilio);
+                                currentProfessor.votarAuxilio(numAuxilio);
+
+
+                                rbAuxilio.setRating(currentProfessor.getRatingAuxilio());
+                                rbDominio.setRating(currentProfessor.getRatingDominio());
+                                rbCoerencia.setRating(currentProfessor.getRatingCoerencia());
+                                rbDidatica.setRating(currentProfessor.getRatingDidatica());
+                            }
+
+
+
+                        }
+
+                        if(!validParams)    Toast.makeText(getApplicationContext(),"Insira um valor de 1 a 5!",Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+
+
+                });
+                btCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+        }
+    }
+
 
     private class AsyncRating extends AsyncTask<String,String,String> {
         ProgressDialog pdLoading = new ProgressDialog(Professor_detalhe.this);

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/glAvaliar"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DIDÁTICA"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:id="@+id/tvRatingDidatica"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="1-5"
+            android:gravity="center"
+            android:background="@drawable/edittextbg"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/etDIDATICA"
+            android:layout_row="0"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COERENCIA"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:id="@+id/tvRatingCoerencia"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="1-5"
+            android:gravity="center"
+            android:background="@drawable/edittextbg"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/etCOERENCIA"
+            android:layout_row="1"
+            android:layout_column="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DOMINIO"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:id="@+id/tvRatingDominio"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="1-5"
+            android:gravity="center"
+            android:background="@drawable/edittextbg"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/etDOMINIO"
+            android:layout_row="2"
+            android:layout_column="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AUXILIO"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:id="@+id/tvRatingAuxilio"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="1-5"
+            android:gravity="center"
+            android:background="@drawable/edittextbg"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/etAUXILIO"
+            android:layout_row="3"
+            android:layout_column="1"
+            />
+    </GridLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/glAvaliar"
+        android:id="@+id/btOK"
+        android:text="OK"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btCANCELAR"
+        android:layout_below="@id/btOK"
+        android:text="CANCELAR"/>
+
+</RelativeLayout>

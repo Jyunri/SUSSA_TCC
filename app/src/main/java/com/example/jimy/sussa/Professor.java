@@ -70,4 +70,25 @@ public class Professor {
     public void setRatingAuxilio(int ratingAuxilio) {
         this.ratingAuxilio = ratingAuxilio;
     }
+
+    public void votarDidatica(int rating)
+    {
+        votos++;
+        ratingDidatica = (ratingDidatica+rating)/votos;
+    }
+    public void votarCoerencia(int rating)
+    {
+        votos++;
+        ratingCoerencia = (ratingCoerencia+rating)/votos;
+    }
+    public void votarDominio(int rating)
+    {
+        votos++;
+        ratingDominio = (ratingDominio+rating)/votos;
+    }
+    public void votarAuxilio(int rating)
+    {
+        votos++;
+        ratingAuxilio = (ratingAuxilio+rating)/votos;
+    }
 }
