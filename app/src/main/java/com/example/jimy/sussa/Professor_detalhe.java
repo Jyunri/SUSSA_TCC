@@ -156,6 +156,7 @@ public class Professor_detalhe extends AppCompatActivity implements View.OnClick
                             if((numDidatica < 6)&&(numCoerencia < 6)&&(numDominio< 6)&&(numAuxilio<6))
                             {
                                 validParams = true;
+                                currentProfessor.votos++;
                                 currentProfessor.votarDidatica(numAuxilio);
                                 currentProfessor.votarCoerencia(numCoerencia);
                                 currentProfessor.votarDominio(numAuxilio);

@@ -19,8 +19,10 @@
         android:gravity="center"/>
 
 
-
-    <ScrollView
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -208,6 +210,7 @@
 
         </RelativeLayout>
     </ScrollView>
+    </HorizontalScrollView>
 
 
 </RelativeLayout>
